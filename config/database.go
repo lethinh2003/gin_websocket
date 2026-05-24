@@ -29,6 +29,8 @@ func ConnectDB() {
 	err = db.AutoMigrate(
 		&models.User{},
 		&models.Keno{},
+		&models.LichSuDatCuocKeno{},
+		&models.ChiTietDatCuocKeno{},
 	)
 
 	if err != nil {

@@ -20,7 +20,7 @@ type Keno struct {
 }
 
 func (k *Keno) BeforeSave(tx *gorm.DB) (err error) {
-	if len(k.KetQua) != 5 {
+	if (k.TinhTrang == TinhTrangHoanTat || k.TinhTrang == TinhTrangDangTraThuong) && len(k.KetQua) != 5 {
 		return fmt.Errorf("kết quả phiên Keno phải chứa đúng 5 phần tử")
 	}
 	return nil

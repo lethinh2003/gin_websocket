@@ -46,3 +46,7 @@ func (r *UserRepository) FindByID(id string) (*models.User, error) {
 	}
 	return &user, nil
 }
+
+func (r *UserRepository) UpdateMoney(id string, money int) error {
+	return r.db.Model(&models.User{}).Where("id = ?", id).Update("money", money).Error
+}

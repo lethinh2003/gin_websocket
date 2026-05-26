@@ -31,5 +31,6 @@ type ChiTietDatCuocKeno struct {
 	LoaiBi    int       `gorm:"type:smallint;not null;check:loai_bi BETWEEN 1 AND 5" json:"loaiBi"`     // constraint 1-5
 	LoaiCuoc  string    `gorm:"type:varchar(2);not null;check:loai_cuoc IN ('C', 'L')" json:"loaiCuoc"` // C or L
 	TienCuoc  int       `gorm:"type:bigint;default:0" json:"tienCuoc"`
+	TienThang int       `gorm:"type:bigint;default:0" json:"tienThang"`
 	CreatedAt time.Time `json:"createdAt"`
 }

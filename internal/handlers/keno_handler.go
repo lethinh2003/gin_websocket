@@ -24,7 +24,7 @@ func NewKenoHandler(kenoRepo *repositories.KenoRepository, datCuocRepo *reposito
 
 type CreateCuocRequest struct {
 	LoaiBi   int    `json:"loaiBi" binding:"required,min=1,max=5"`
-	LoaiCuoc string `json:"loaiCuoc" binding:"required,oneof=T X C L"`
+	LoaiCuoc string `json:"loaiCuoc" binding:"required,oneof=C L"`
 	TienCuoc int    `json:"tienCuoc" binding:"required,min=1000"`
 	Phien    int    `json:"phien" binding:"required"`
 }
@@ -85,7 +85,7 @@ func getErrorMsg(fe validator.FieldError) string {
 		if fe.Tag() == "required" {
 			return "Loại cược là bắt buộc"
 		}
-		return "Loại cược phải là một trong các giá trị: T (Tài), X (Xỉu), C (Chẵn), L (Lẻ)"
+		return "Loại cược phải là một trong các giá trị: C (Chẵn), L (Lẻ)"
 	case "TienCuoc":
 		if fe.Tag() == "required" {
 			return "Tiền cược là bắt buộc"

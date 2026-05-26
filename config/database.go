@@ -31,10 +31,16 @@ func ConnectDB() {
 		&models.Keno{},
 		&models.LichSuDatCuocKeno{},
 		&models.ChiTietDatCuocKeno{},
+		&models.SystemSetting{},
 	)
 
 	if err != nil {
 		log.Fatalf("Failed to auto migrate: %v", err)
+	}
+
+	// Seed Initial Values
+	if err := models.SeedSystemSettings(db); err != nil {
+		log.Fatalf("Failed to seed system settings: %v", err)
 	}
 
 	DB = db
